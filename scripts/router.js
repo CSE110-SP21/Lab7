@@ -35,8 +35,8 @@ router.setState = function(theElement) {
    *    1. You may add as many helper functions in this file as you like
    *    2. You may modify the parameters of setState() as much as you like
    * 
-   */
-  /** if (typeof theElement == 'object')
+   
+   if (typeof theElement == 'object')
    {
     
     let theBody = document.querySelector('body');
