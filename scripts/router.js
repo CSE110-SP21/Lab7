@@ -35,7 +35,7 @@ router.setState = function(theElement) {
    *    1. You may add as many helper functions in this file as you like
    *    2. You may modify the parameters of setState() as much as you like
    * 
-   
+   */
    if (typeof theElement == 'object')
    {
     
@@ -77,7 +77,5 @@ router.setState = function(theElement) {
       theTitle.innerHTML = "Journal Entries";
       theBody.className = '';
     }
-
-*/
 
 }

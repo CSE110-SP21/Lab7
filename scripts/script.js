@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
      
 });
 
-/*theHeader.addEventListener('click', function(){
+theHeader.addEventListener('click', function(){
   if (document.location.hash != '#Main')
   {
     setState('MainPage');
@@ -41,8 +41,7 @@ theSetting.addEventListener('click', function(){
 });
 
 window.addEventListener('popstate', function(){
-history.back();/
-})
-*/
+history.back();
+});
 
 
