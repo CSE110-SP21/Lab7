@@ -5,7 +5,7 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function() {
+router.setState = function(theElement) {
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
@@ -34,5 +34,50 @@ router.setState = function() {
    * - Answers to some questions you may have:
    *    1. You may add as many helper functions in this file as you like
    *    2. You may modify the parameters of setState() as much as you like
+   * 
    */
+   if (typeof theElement == 'object')
+   {
+    
+    let theBody = document.querySelector('body');
+    let oldEntryPage = document.querySelector('entry-page');
+    theBody.removeChild(oldEntryPage);
+
+    let theNewEntry = document.createElement('entry-page');
+    theBody.appendChild(theNewEntry);
+    theNewEntry.entry = theElement.info;
+
+    const stateOfEntry = {'ID': "Entry"};
+    const numberOfElement = theElement.number;
+    history.pushState(stateOfEntry, '', `/Lab7#entry${numberOfElement}`);
+   
+    let theTitle = document.querySelector('h1');
+    theTitle.innerHTML = `Entry ${numberOfElement}`;
+    theBody.className = 'single-entry';
+     
+   }
+
+    if (theElement == 'SettingPage')
+    {
+      let theBody = document.querySelector('body');
+      let theTitle = document.querySelector('h1');
+      theTitle.innerHTML = "Settings";
+      const stateOfSetting = {'ID': 'Settings'};
+      history.pushState(stateOfSetting, '', '/Lab7#settings');
+      theBody.className = 'settings';
+      
+    }
+
+    if (theElement == 'MainPage')
+    {
+      let theBody = document.querySelector('body');
+      const stateOfMain = {'ID': 'MainPage'};
+      history.pushState(stateOfMain, '', '/Lab7#Main');
+      let theTitle = document.querySelector('h1');
+      theTitle.innerHTML = "Journal Entries";
+      theBody.className = '';
+    }
+
+
+
 }
