@@ -49,7 +49,7 @@ router.setState = function(theElement) {
 
     const stateOfEntry = {'ID': "Entry"};
     const numberOfElement = theElement.number;
-    history.pushState(stateOfEntry, '', `/Lab7#entry${numberOfElement}`);
+    history.pushState(stateOfEntry, '', `/#entry${numberOfElement}`);
    
     let theTitle = document.querySelector('h1');
     theTitle.innerHTML = `Entry ${numberOfElement}`;
@@ -63,7 +63,7 @@ router.setState = function(theElement) {
       let theTitle = document.querySelector('h1');
       theTitle.innerHTML = "Settings";
       const stateOfSetting = {'ID': 'Settings'};
-      history.pushState(stateOfSetting, '', '/Lab7#settings');
+      history.pushState(stateOfSetting, '', '/#settings');
       theBody.className = 'settings';
       
     }
@@ -72,7 +72,7 @@ router.setState = function(theElement) {
     {
       let theBody = document.querySelector('body');
       const stateOfMain = {'ID': 'MainPage'};
-      history.pushState(stateOfMain, '', '/Lab7#Main');
+      history.pushState(stateOfMain, '', '/#Main');
       let theTitle = document.querySelector('h1');
       theTitle.innerHTML = "Journal Entries";
       theBody.className = '';
