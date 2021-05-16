@@ -16,17 +16,17 @@ document.addEventListener('DOMContentLoaded', () => {
       {
         let newPost = document.createElement('journal-entry');
         newPost.entry = entries[i];
-        newPost.addEventListener('click', function(){
+       /* newPost.addEventListener('click', function(){
           var newObject = {info: entries[i], number: i + 1};
           setState(newObject);
-        });
+        });*/
         document.querySelector('main').appendChild(newPost);
       }
       });
      
 });
 
-theHeader.addEventListener('click', function(){
+/*theHeader.addEventListener('click', function(){
   if (document.location.hash != '#Main')
   {
     setState('MainPage');
@@ -41,8 +41,8 @@ theSetting.addEventListener('click', function(){
 });
 
 window.addEventListener('popstate', function(){
-history.back();
+history.back();/
 })
-
+*/
 
 
