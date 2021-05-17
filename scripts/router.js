@@ -5,7 +5,7 @@ export const router = {};
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function() {
+router.setState = function(state, index) {
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
@@ -35,4 +35,51 @@ router.setState = function() {
    *    1. You may add as many helper functions in this file as you like
    *    2. You may modify the parameters of setState() as much as you like
    */
+
+  let bdy = document.querySelector("body");
+
+  if (state.substring(0, 5) == "entry") {
+    state = "entry";
+    index = Number(state.substring(5));
+  }
+
+  if (state == "home") {
+    
+    history.pushState({page: "home"}, "home", "");
+    
+    bdy.setAttribute("class", "");
+
+    document.querySelector("header > h1").innerText = "Journal Entries";
+
+    history.replaceState(null, null, ' ');
+
+  } else if (state == "entry") {
+
+    let ent = document.querySelector("entry-page");
+    
+    ent.remove();
+    
+    document.querySelector("body").appendChild(document.createElement("entry-page"));
+
+    history.pushState({page: "entry" + (index + 1)}, "entry" + index, "#entry" + (index + 1));
+
+    bdy.setAttribute("class", "single-entry");
+
+    document.querySelector("header > h1").innerText = "Entry " + (index + 1);
+
+    document.querySelector("entry-page").entry = document.querySelectorAll("journal-entry")[index].entry;
+
+    console.log("moving entry " + index);
+
+  } else if (state == "settings") {
+
+    history.pushState({page: "settings"}, "settings", "#settings");
+    
+    bdy.setAttribute("class", "settings");
+
+    document.querySelector("header > h1").innerText = "Settings";
+
+  } else {
+    console.log("error in changing states - unexpected string " + state);
+  }
 }
