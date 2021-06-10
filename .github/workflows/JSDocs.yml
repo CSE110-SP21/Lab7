@@ -1,0 +1,41 @@
+name: JSDocs
+on: [push,pull_request]
+jobs: 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+          
+        - name: Build
+          uses: andstor/jsdoc-action@v1
+          with:
+            source_dir: ./
+            recurse: true
+            output_dir: ./jsdocs
+            
+        - name: fecth
+          run: git fetch origin main
+          
+        - name: branch check 
+          run: git branch
+        
+
+        - name: config b2wu
+          run: git config --global user.name "QE" 
+        - name: config email
+          run: git config --global user.email "b2wu@ucsd.edu"
+          
+          
+        - name: upload to repor
+          working-directory: ./
+          run: git add jsdocs/
+        - name: commit to repor
+          run: git commit -m 'jsodcs updatge'
+        - name: push to repor
+          run: git push origin HEAD:main
+
+        - name: config run
+          working-directory: ./jsdocs
+          run:  ls
+ 
